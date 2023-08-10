@@ -55,13 +55,8 @@ import { API } from './global'
 //    </>
 //   )
 // }
-export function Movie({ movie, id, deleteButton, editButton }) {
-  // const movie = {
-  //   name: "The Avengers",
-  //   rating: 8,
-  //   summary:"Marvel's The Avengers (classified under the name Marvel Avengers Assemble in the United Kingdom and Ireland), or simply The Avengers, is a 2012 American superhero film based on the Marvel Comics superhero team of the same name.",
-  //   poster:"https://terrigen-cdn-dev.marvel.com/content/prod/1x/avengersendgame_lob_crd_05.jpg"
-  // };
+export function Movie({ movie, deleteButton, editButton }) {
+ 
   const [show, setShow] = useState(true);
 
   const styles = {
@@ -70,14 +65,6 @@ export function Movie({ movie, id, deleteButton, editButton }) {
   };
   const navigate = useNavigate();
 
-  // block = true
-  // none -false
-  //show = !true -> false
-  //conditional styling
-  // const summaryStyle = {
-  //   display: show ? "block" : "none",
-  // }
-  //conditional rendering
   return (
     <div className="movie-container">
       <img className="movie-poster" src={movie.poster} alt={movie.name} />
@@ -93,7 +80,7 @@ export function Movie({ movie, id, deleteButton, editButton }) {
 
 
           <IconButton className="toggle-style"
-            onClick={() => navigate(`/movie/${id}` )}
+            onClick={() => navigate(`/movie/${movie._id}` )}
             aria-label="Info"
             color="primary">
             <InfoIcon />

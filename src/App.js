@@ -301,10 +301,6 @@ export default function App() {
       >ADD MOVIES</Button>
       <Button 
       color="inherit"
-      onClick={() => navigate("/color-game")}
-      >COLOR GAME</Button>
-      <Button 
-      color="inherit"
       startIcon={mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
       onClick={() => setMode(mode == "light" ? "dark" : "light") }
       >

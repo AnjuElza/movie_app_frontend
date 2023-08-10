@@ -15,46 +15,50 @@ export function MovieList() {
     fetch(`${API}/movies`, {
       method: "GET",
     })
-  .then(res => res.json())
-  .then((mvs) => setMovieList(mvs))
+    .then(res => {
+      if (!res.ok) {
+        throw new Error(`Error fetching movies: ${res.status} - ${res.statusText}`);
+      }
+      return res.json();
+    })
+    .then((mvs) => setMovieList(mvs))
+    .catch(error => console.error(error)); // Log any fetch errors
   }
-   
 
   useEffect(() => getMovies(), [])
 
   const navigate = useNavigate();
 
   return (
-<>
-
-   <div className="movie-list">
-            {movieList.map((mv, index) => (
-                <Movie
-                    key={mv._id}
-                    movie={mv}
-                    id={mv._id}
-                    deleteButton={<IconButton
-                        onClick={() => {
-                            fetch(`${API}/movies/${mv._id}`, {
-                                method: "DELETE",
-                            }).then(() => getMovies());
-                        } }
-                        color="error"
-                    >
-                        <DeleteIcon />
-                    </IconButton>}
-                    //edit button   - movies/edit/:id
-                    editButton={<IconButton
-                        onClick={() => navigate(`/movie/edit/${mv._id}`)}
-                        color="success"
-                    >
-                        <EditIcon />
-                    </IconButton>} />
-            ))}
-
-        </div></>
-       
-
-
+    
+    <>
+      <div className="movie-list">
+        {movieList.map((mv) => (
+           
+          <Movie
+            key={mv._id}
+            movie={mv}
+            deleteButton={<IconButton
+              onClick={() => {
+                fetch(`${API}/movies/${mv._id}`, {
+                  method: "DELETE",
+                }).then(() => getMovies());
+              }}
+              color="error"
+            >
+              <DeleteIcon />
+            </IconButton>}
+            editButton={<IconButton
+              onClick={() => navigate(`/movie/edit/${mv._id}`)}
+              color="success"
+            >
+              <EditIcon />
+            </IconButton>}
+          />
+         
+        ))}
+        
+      </div>
+    </>
   );
-}
+            }
