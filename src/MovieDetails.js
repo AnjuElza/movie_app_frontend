@@ -7,14 +7,14 @@ import { useEffect, useState } from "react";
 import { API } from './global'
 
 export function MovieDetails() {
-  const { id } = useParams(); // extract id from URL
+  const { _id } = useParams(); // extract id from URL
   // const movie = movieList[id];
 
   const [movie, setMovie] = useState({});
 
    
   useEffect(() => {
-    fetch(`${API}/movies/${id}`, {
+    fetch(`${API}/movies/${_id}`, {
       method: "GET",
     }) 
   .then(res => res.json())
@@ -35,7 +35,7 @@ export function MovieDetails() {
       <div className="movie-detail-container">    
       <div className="movie-spec">
         <h2 className="movie-name">{movie.name}</h2>
-        <h4>{movie._id}</h4>   
+         
         <p className="movie-rating">⭐ {movie.rating}</p>
       </div>     
       <p className="movie-summary">{movie.summary}</p>  
