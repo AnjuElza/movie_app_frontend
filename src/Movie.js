@@ -70,6 +70,7 @@ export function Movie({ movie, deleteButton, editButton }) {
       <img className="movie-poster" src={movie.poster} alt={movie.name} />
       <div className="movie-spec">
         <h2 className="movie-name">{movie.name}
+        <h4>{movie._id}</h4>
           <IconButton
             onClick={() => setShow(!show)}
             aria-label="Toggle description"

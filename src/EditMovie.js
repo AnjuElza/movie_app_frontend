@@ -6,14 +6,14 @@ import { EditMovieForm } from './EditMovieForm';
 
 export function EditMovie() {
   
-  const { id } = useParams(); // extract id from URL
+  const { _id } = useParams(); // extract id from URL
   // const movie = movieList[id];
-
+console.log(`edit movie id: ${_id}`)
   const [movie, setMovie] = useState(null);
 
    
   useEffect(() => {
-    fetch(`${API}/movies/${id}`, {
+    fetch(`${API}/movies/${_id}`, {
       method: "GET",
     }) 
   .then(res => res.json())

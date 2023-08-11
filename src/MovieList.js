@@ -34,7 +34,7 @@ export function MovieList() {
     <>
       <div className="movie-list">
         {movieList.map((mv) => (
-           
+          
           <Movie
             key={mv._id}
             movie={mv}

@@ -34,7 +34,8 @@ export function MovieDetails() {
       <iframe width="100%" height="550" src={movie.trailer} title="Frozen 2 | Official Trailer 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       <div className="movie-detail-container">    
       <div className="movie-spec">
-        <h2 className="movie-name">{movie.name}</h2>   
+        <h2 className="movie-name">{movie.name}</h2>
+        <h4>{movie._id}</h4>   
         <p className="movie-rating">⭐ {movie.rating}</p>
       </div>     
       <p className="movie-summary">{movie.summary}</p>  
